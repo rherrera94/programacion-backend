@@ -4,7 +4,7 @@ const routerApi=express.Router();
 const listado=require('./Archivo');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static(__dirname+'/public'));
 /*
  almacena el producto y devuelve el producto incorporado
 */
