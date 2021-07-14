@@ -89,7 +89,7 @@ class Archivo{
         if (contenido.length==0){
             producto.id = contenido.length + 1;
         }else{
-            producto.id=(contenido[contenido.length-1].id)+1;
+            producto.id=parseInt(contenido[contenido.length-1].id)+1;
         }
          
         contenido.push(producto);
