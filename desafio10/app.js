@@ -17,7 +17,7 @@ app.engine(
     })
 );
 
-app.use('/api',routerApi);
+app.use('/',routerApi);
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
