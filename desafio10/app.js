@@ -1,5 +1,5 @@
 
-//para entrar a la aplicacion http://localhost:8080/api
+//para entrar a la aplicacion http://localhost:8080
 const express= require('express');
 const app= express();
 const routerApi=express.Router();
