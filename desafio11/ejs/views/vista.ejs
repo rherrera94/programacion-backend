@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%-include('./partials/head')-%>
+  </head>
+<body>
+    <div>
+        <h1>Productos</h1>
+        <br>
+        <% if(productos.length!=0){%> 
+                <table class="table table-dark">
+                    <tr> 
+                        <th>Producto</th> 
+                        <th>Precio</th> 
+                        <th>Imagen</th>
+                    </tr>
+                    <% productos.forEach(function(product){ %>
+                        <tr> 
+                            <td><%= product.title %></td>
+                            <td><%= product.price %></td>
+                            <td><img src=<%= product.thumbnail %> alt="No se ha podido cargar la imagen"  width="70"></td>
+                        </tr>
+                    <% }) %>
+                </table>
+            <%}else{%>  
+                <div class="alert alert-primary" role="alert">
+                        <h3><%= error %></h3>
+                </div>            
+         <% }%>
+    </div>    
+</body>
+</html>
