@@ -40,10 +40,10 @@ handlebars de tablaProductos y despues paso esa info al callback que despues
 unira este pedazo de html al html principal*/
 function vistaTabla(productos,cb) {
     fetch('/tablaProductos.hbs')
-    .then(respuesta => respuesta.text())
-    .then( plantilla => {
-        var template = Handlebars.compile(plantilla);
-        let html = template(productos);
-        cb(html);
-    })
+        .then(respuesta => respuesta.text())
+        .then( plantilla => {
+            var template = Handlebars.compile(plantilla);
+            let html = template(productos);
+            cb(html);
+        })
 }
