@@ -1,0 +1,16 @@
+<div class="card shadow">
+    <div class="card-body">
+        <div class="row">
+				<div class="col-12">
+					<h3>Mensajes:</h3>
+					<div id="mensajesChat">
+						{{#each mensajes }}
+							<b style="color:blue">{{ this.email }}</b><span style="color: brown">{{this.hora}}</span>: <i style="color:green">{{ this.msg }}</i>
+							<br>
+						{{/each }}
+					</div>
+                	<hr>
+            	</div>
+        	</div>
+    	</div>
+	</div>
