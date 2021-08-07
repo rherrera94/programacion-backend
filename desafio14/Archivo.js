@@ -14,7 +14,7 @@ class Archivo{
     }
     async buscar (id){
         const contenido=await this.leer();
-        if (contenido==[]){
+        if (contenido.length==0){
             return [];
         }
         let i=0;
@@ -34,7 +34,7 @@ class Archivo{
     }
     async modificar(producto){
         const contenido=await this.leer();
-        if (contenido==[]){
+        if (contenido.length==0){
             return [];
         }
         let i=0;
@@ -60,7 +60,7 @@ class Archivo{
     }
     async borrarProducto(producto){
         const contenido=await this.leer();
-        if (contenido==[]){
+        if (contenido.length==0){
             return [];
         }
         let i=0;
