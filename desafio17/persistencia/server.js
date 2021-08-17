@@ -7,7 +7,7 @@ const app=express();
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const productoio=require('./services/producto');
-
+const mensajeio=require('./services/mensaje');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname+'/../public'))
@@ -41,31 +41,7 @@ io.on('connect', async (socket)=>{
             return({error: e.message});
         }
     }
-    /*let contenidochat=async ()=>{
-        try{
-            let cont= await chatMensajes.leer();
-            return({mensajes: cont});
-        }catch(e){
-            return({error: e.message});
-        }
-    }*/
-    /*let mensajeGuarda=async(msg)=>{
-        try{    
-            let resultado=await chatMensajes.guardar(msg)
-            if (resultado.length==0){
-                throw new Error("Error al guardar el archivo");
-            }
-            return({mensajes:resultado});
-        }catch(e){
-            return({"error":e.message});
-        }        
-    }
-    socket.on('chat:mensaje',async(data)=>{ 
-        await mensajeGuarda(data);
-        io.sockets.emit('chat',await contenidochat());
-    })*/
     socket.emit('productos',await contenido());
-    //socket.emit('chat',await contenidochat());
     socket.on('guardarProducto', async (data) =>{
         io.sockets.emit('productos',await contenido());
       }
