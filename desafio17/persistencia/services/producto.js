@@ -10,5 +10,8 @@ class productoService{
 	async vistaProductoid(id){
 		return ProductoDAO.vistaProductosid(id);
 	}
+	async borrarProducto(id){
+		return ProductoDAO.borrarProducto(id);
+	}
 }
 module.exports=new productoService();

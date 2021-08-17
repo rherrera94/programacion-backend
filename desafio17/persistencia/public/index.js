@@ -29,10 +29,10 @@ form.addEventListener('submit', evento => {
     }) 
     .then(respuesta =>respuesta.json()) 
     .then( productos => {
-        form.reset() 
+        form.reset()
         socket.emit('guardarProducto', 'ok');
     })
-    .catch(error => console.error(error.message));
+    .catch(error => console.error("error.message"));
 })
 /* en esta funcion tomo lo que me viene por productos, lo inserto dentro del
 handlebars de tablaProductos y despues paso esa info al callback que despues

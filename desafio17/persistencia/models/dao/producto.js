@@ -2,6 +2,7 @@ const db=require("../db/db");
 
 class productoDAO{
 	async createProducto({title,price,thumbnail}){
+		console.log("titulo "+title+"precio "+price+"thumbnail "+thumbnail);
 		await db("productos").insert({
 			title,
 			price,
@@ -13,6 +14,9 @@ class productoDAO{
 	}
 	async vistaProductosid(id){
 		return db("productos").select().where('id',id);
+	}
+	async borrarProducto(id){
+		return db("productos").delete().where('id',id);
 	}
 };
 module.exports=new productoDAO();

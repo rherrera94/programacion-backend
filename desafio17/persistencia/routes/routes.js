@@ -1,8 +1,14 @@
-const {productoController, productovController, productovControllerid}=require("../controller/producto");
+const {productoController, productovController, productovControllerid, productobController, productosVista}=require("../controller/producto");
 
 module.exports=(router)=>{
-	router.post("/api/productos/guardar",productoController);
-	router.get("/api/productos/vista",productovController);
-	router.get("/api/productos/:id",productovControllerid);
+	router.get('/',(req,res)=>{
+		console.log("ingresa")
+		res.render("vistaTabla");
+	})
+	router.post("/productos/guardar",productoController);
+	router.get("/productos/listar",productovController);
+	router.get("/productos/listar/:id",productovControllerid);
+	router.delete("/productos/borrar/:id",productobController);
+	router.get("/productos/vista",productosVista)
 	return router;
 };
