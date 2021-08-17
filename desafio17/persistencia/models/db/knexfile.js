@@ -1,3 +1,4 @@
+require('dotenv').config()
 module.exports={
 	development:{
 		client:"mysql",
@@ -5,7 +6,14 @@ module.exports={
 			host:process.env.HOST ||'127.0.0.1',
 			user: process.env.USER_DB||'root',
 			password:"",
-			database:"productos",
+			database:process.env.DATABASE,
 		},
 	},
+	conexionSQLite:{
+		client: 'sqlite3',
+		connection: {
+		  filename: "./mensajes.sqlite"
+		},
+		useNullAsDefault:true
+	  },
 };

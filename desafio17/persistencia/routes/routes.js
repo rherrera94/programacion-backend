@@ -2,7 +2,6 @@ const {productoController, productovController, productovControllerid, productob
 
 module.exports=(router)=>{
 	router.get('/',(req,res)=>{
-		console.log("ingresa")
 		res.render("vistaTabla");
 	})
 	router.post("/productos/guardar",productoController);

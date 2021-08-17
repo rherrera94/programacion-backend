@@ -1,4 +1,4 @@
-const db=require("../db/db");
+const {db}=require("../db/db");
 
 class productoDAO{
 	async createProducto({title,price,thumbnail}){

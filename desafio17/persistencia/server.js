@@ -2,16 +2,15 @@ const express=require('express');
 const routes=require ('./routes/routes');
 const cors=require ('cors');
 const compression=require ('compression');
-
 const router=express.Router();
 const app=express();
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const productoio=require('./services/producto');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname+'/public'))
-console.log(__dirname+'/public')
+app.use(express.static(__dirname+'/../public'))
 const handlebars=require('express-handlebars');
 
 app.engine(
