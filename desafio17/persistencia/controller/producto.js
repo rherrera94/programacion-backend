@@ -5,7 +5,6 @@ class ProductoControlador{
 		this.model=modelo;
 	}
 	async productoController (req,res,next){
-		//const product=new ProductoService();
 		await ProductoService.createProducto(req.body);
 		res.status(200).json({
 			...req.body,

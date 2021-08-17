@@ -1,6 +1,6 @@
 const db=require("../db/db");
 
-module.exports=class productoDAO{
+class productoDAO{
 	async createProducto({title,price,thumbnail}){
 		await db("productos").insert({
 			title,
@@ -15,3 +15,4 @@ module.exports=class productoDAO{
 		return db("productos").select().where('id',id);
 	}
 };
+module.exports=new productoDAO();
