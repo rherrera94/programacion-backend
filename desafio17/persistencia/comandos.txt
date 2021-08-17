@@ -1,0 +1,9 @@
+npx knex migrate:make init --migrations-directory src/models/db/migrations
+
+//ejecutar migraciones de tipo up base de datos tiene que estar creada
+
+npx knex migrate:latest --knexfile src/models/db/knexfile.js
+
+//ejecutar migracion de tipo down
+
+npx knex migrate:down --knexfile src/models/db/knexfile.js
