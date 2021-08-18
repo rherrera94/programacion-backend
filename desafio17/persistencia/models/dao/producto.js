@@ -2,7 +2,6 @@ const {db}=require("../db/db");
 
 class productoDAO{
 	async createProducto({title,price,thumbnail}){
-		console.log("titulo "+title+"precio "+price+"thumbnail "+thumbnail);
 		await db("productos").insert({
 			title,
 			price,

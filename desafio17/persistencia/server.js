@@ -41,7 +41,32 @@ io.on('connect', async (socket)=>{
             return({error: e.message});
         }
     }
+    let contenidochat=async ()=>{
+        try{
+            let cont= await mensajeio.vistaMensaje();
+            return({mensajes: cont});
+        }catch(e){
+            return({error: e.message});
+        }
+    }
+    let mensajeGuarda=async(msg)=>{
+        try{    
+            let resultado=await mensajeio.createMensaje(msg)
+            if (resultado.length==0){
+                throw new Error("Error al guardar el archivo");
+            }
+            return({mensajes:resultado});
+        }catch(e){
+            return({"error":e.message});
+        }        
+    }
+    socket.on('chat:mensaje',async(data)=>{ 
+        await mensajeGuarda(data);
+        io.sockets.emit('chat',await contenidochat());
+    })
+
     socket.emit('productos',await contenido());
+    socket.emit('chat',await contenidochat());
     socket.on('guardarProducto', async (data) =>{
         io.sockets.emit('productos',await contenido());
       }

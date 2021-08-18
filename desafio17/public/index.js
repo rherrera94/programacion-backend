@@ -57,7 +57,6 @@ let mensajeEnviar=document.getElementById('mensajeEnviar');
 let emailEnviar=document.getElementById('email');
 let btn=document.getElementById('botonEnviar');
 btn.addEventListener('click',function(){
-    console.log("ingresa boton")
     socket.emit('chat:mensaje',{
         msg:mensajeEnviar.value,
         email: emailEnviar.value
@@ -65,12 +64,10 @@ btn.addEventListener('click',function(){
 })
 socket.on('chat',chat =>{
     vistaChat(chat, html => {
-        console.log("ingresa vista chat");
         document.getElementById('chatmsg').innerHTML = html;
     })
 })
 function vistaChat(chat,cb) {
-    console.log("ingresa vi")
     fetch('/vistaMensaje.hbs')
         .then(respuesta => respuesta.text())
         .then( plantilla => {
