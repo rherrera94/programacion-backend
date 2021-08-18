@@ -11,12 +11,26 @@ class ProductoControlador{
 		})
 	}
 	async productovController(req,res,next){
-		let productos=await ProductoService.vistaProducto();
-		res.status(200).json(productos);
+		try{
+			let productos=await ProductoService.vistaProducto();
+			if (productos.length==0){
+				throw new Error('no hay productos cargados')
+			}
+			res.status(200).json(productos);
+		}catch(e){
+			res.status(404).json ({"error": e.message});
+		}
 	}
 	async productovControllerid(req,res,next){
-		let producto=await ProductoService.vistaProductoid(req.params.id);
-		res.status(200).json(producto);
+		try{
+			let producto=await ProductoService.vistaProductoid(req.params.id);
+			if (producto.length==0){
+				throw new Error('no hay productos cargados')
+			}
+			res.status(200).json(producto);
+		}catch(e){
+			res.status(404).json ({"error": e.message});
+		}
 	}
 	async productobController(req,res,next){
 		try{
