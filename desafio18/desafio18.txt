@@ -1,0 +1,5 @@
+use prueba
+db.items.insert({"nombre":"Fideos","Categoria":"Harina","Stock":20})
+db.items.insert({"nombre":"Leche","Categoria":"Lácteos","Stock":30})
+db.items.insert({"nombre":"Crema","Categoria":"Lácteos","Stock":15})
+db.items.find()
