@@ -1,0 +1,47 @@
+use ecommerce
+db.productos.insert({"title":"Escuadra","price":123.45,"thumbnail":"https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png"})
+db.productos.insert({"title":"Calculadora","price":234.56,"thumbnail":"https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png"})
+db.productos.insert({"title":"Globo Terráqueo","price":345.67,"thumbnail":"https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png"})
+db.productos.insert({"title":"Bombita de luz","price":700,"thumbnail":"https://cdn3.iconfinder.com/data/icons/unigrid-phantom-science-vol-1/60/003_022_lamp_incandescent_idea_spherical_light-512.png"})
+db.productos.insert({"title":"Libro","price":400,"thumbnail":"https://cdn3.iconfinder.com/data/icons/education-science-vol-1-1/512/reading_book_read_learn-512.png"})
+db.productos.insert({"title":"Celular","price":2900,"thumbnail":"https://cdn1.iconfinder.com/data/icons/seo-outline-colored-free/128/Smartphone_iphone_phone-512.png"})
+db.productos.insert({"title":"Pelota de tenis","price":650,"thumbnail":"https://cdn3.iconfinder.com/data/icons/education-science-vol-2-1/512/tennis_ball_sports_game-512.png"})
+db.productos.insert({"title":"Pelota de softball","price":780,"thumbnail":"https://cdn0.iconfinder.com/data/icons/sports-119/64/sports_ball_softball_basball-512.png"})
+db.productos.insert({"title":"televisor","price":4001,"thumbnail":"https://cdn1.iconfinder.com/data/icons/events-and-entertainment-5/64/9-512.png"})
+db.productos.insert({"title":"televisor","price":4000,"thumbnail":"https://cdn4.iconfinder.com/data/icons/kitchen-and-cooking-1-2/85/chef_hat_cooker_cap-512.png"})
+db.mensajes.insert({"msg":"mensaje de prueba 1","email":"rafael@gmail.com","hora":"[2/7/2021 18:3:32]"})
+db.mensajes.insert({"msg":"mensaje de prueba 2","email":"rafits@gmail.com","hora":"[2/7/2021 18:3:46]"})
+db.mensajes.insert({"msg":"este es otro mensaje de prueba","email":"pajaro@gmail.com","hora":"[2/7/2021 18:5:37]"})
+db.mensajes.insert({"msg":"rafael","email":"rafa@outlook.com.ar","hora":"[2/7/2021 18:13:55]"})
+db.mensajes.insert({"msg":"mi nombre es gimena","email":"gimena@outlook.com.ar","hora":"[2/7/2021 18:25:55]"})
+db.mensajes.insert({"msg":"mensaje de prueba 4","email":"gimena@outlook.com.ar","hora":"[2/7/2021 18:32:05]"})
+db.mensajes.insert({"msg":"mensaje de prueba 5","email":"rafa@outlook.com.ar","hora":"[2/7/2021 18:45:05]"})
+db.mensajes.insert({"msg":"mensaje de prueba 8","email":"gimena@outlook.com.ar","hora":"[2/7/2021 18:55:05]"})
+db.mensajes.insert({"msg":"mensaje de prueba 9","email":"rafa@outlook.com.ar","hora":"[2/7/2021 18:56:05]"})
+db.mensajes.insert({"msg":"mensaje de prueba 10","email":"gimena@outlook.com.ar","hora":"[2/7/2021 18:58:05]"})
+db.productos.find()
+db.mensajes.find()
+db.productos.find().count()
+db.mensajes.find().count()
+db.productos.insert({"title":"Pelota","price":710,"thumbnail":"https://cdn0.iconfinder.com/data/icons/sports-119/64/sports_ball_softball_basball-512.png"})
+db.productos.find({price:{$lt:1000}})
+db.productos.find({$and:[{price:{$gt:1000}},{price:{$lt:3000}}]})
+db.productos.find({price:{$gt:3000}})
+
+//para poder decirle a mongo que me devuelve solo un conjunto determinado de datos de un documento lo que hago es poner
+//un segundo parametro en la consulta que sera el que me determine cual parametro se vera. Pero mongo muestra tambien
+//siempre el id por lo que le tengo que poner id en 0 para que no lo muestre y el titulo en 1 por que es el que quiero mostrar
+//cuando hago sort le pongo 1 a price ya que necesito que se ordene en forma ascendente para lograr obtener los primeros tres documentos
+//despues me salteo los dos primeros y solo me quedo con el 3
+
+db.productos.find({},{"_id":0, "title":1}).sort({"price":1}).limit(3).skip(2).limit(1)
+
+// en cuanto a la siguiente consulta segun la filmina 35 y 38 el filtro iria vacio por que se tiene que aplicar a todos los documentos
+//en cuanto al segundo parametro (set) le tengo que poner lo que se va a reemplazar osea en este caso el stock a 100
+// y en cuanto al tercer parametro (multi) lo pongo en true por que sera a muchos.
+
+db.productos.update({}, {$set: {stock: 100}},{multi:true})
+db.productos.update({"price":{$gt:4000}}, {$set: {stock: 0}},{multi:true})
+db.productos.deleteMany({"price":{$lt:1000}})
+use admin
+db.createUser({user:'pepe',pwd:'asd456',roles:[{"role":"read","db":"ecommerce"}]})
