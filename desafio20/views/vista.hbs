@@ -1,0 +1,25 @@
+<div>
+    <h1>Productos</h1>
+    <br>
+    {{#if productos}} 
+            <table class="table table-dark">
+                <tr> 
+                    <th>Producto</th> 
+                    <th>Precio</th> 
+                    <th>Imagen</th>
+                </tr>
+                {{#each productos}}
+                    <tr> 
+                        <td>{{this.title}}</td>
+                        <td>${{this.price}}</td>
+                        <td><img src={{this.thumbnail}} alt="No se ha podido cargar la imagen"  width="70"></td>
+                    </tr>
+                {{/each}}
+            </table>
+    {{else}}  
+            <div class="alert alert-primary" role="alert">
+                    <h3>{{this.error}}</h3>
+            </div>
+        
+    {{/if}}
+</div>
