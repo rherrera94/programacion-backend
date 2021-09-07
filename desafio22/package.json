@@ -1,0 +1,16 @@
+{
+  "name": "desafio22",
+  "version": "1.0.0",
+  "description": "",
+  "main": "operaciones.js",
+  "dependencies": {
+    "init": "^0.1.2",
+    "jest": "^27.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
